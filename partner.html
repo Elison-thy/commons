@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Elephante Commons | Full-Screen Partners — Unique Styles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* All styles remain the same as before */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .partner-full {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .partner-container {
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+            z-index: 2;
+            position: relative;
+        }
+        .partner-container.image-left {
+            flex-direction: row-reverse;
+        }
+        .partner-container.image-below {
+            flex-direction: column;
+            text-align: center;
+        }
+        .partner-text {
+            flex: 1.2;
+            min-width: 280px;
+        }
+        .partner-text h2 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .partner-text p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            opacity: 0.9;
+        }
+        .partner-img {
+            flex: 0.9;
+            text-align: center;
+        }
+        .partner-img img {
+            max-width: 100%;
+            max-height: 360px;
+            object-fit: cover;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.25);
+            transition: transform 0.4s;
+        }
+        .partner-img img:hover { transform: scale(1.02); }
+        .partner-img .img-label {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        .partner-btn { 
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-top: 12px;
+            border: 2px solid;
+        }
+        .partner-btn:hover { transform: translateY(-4px); filter: brightness(1.05);}
+        
+        .octagon-img { clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%); }
+        .hexagon-img { clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); }
+        .circle-img { border-radius: 50%; aspect-ratio: 1/1; object-fit: cover; }
+        .blob-img { border-radius: 40% 60% 60% 40% / 50% 50% 50% 50%; }
+        .squircle-img { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        .shield-img { clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
+        .wave-img { border-radius: 30% 70% 50% 50% / 50% 40% 60% 50%; }
+        .flower-img { border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%; }
+        .frame-img { border-radius: 20px 60px 20px 60px; }
+        .parallelogram-img { clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%); }
+        .teardrop-img { clip-path: polygon(50% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%); }
+        .starburst-img { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+        .cube-img { border-radius: 15px; }
+        .rounded-pill-img { border-radius: 60px 60px 60px 20px; }
+        
+        .overlap-container {
+            position: relative;
+            min-height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlap-container .img-back {
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+        }
+        .overlap-container .img-front {
+            position: absolute;
+            z-index: 2;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            border: 3px solid;
+            transition: transform 0.3s ease;
+        }
+        .overlap-container .img-front:hover {
+            transform: rotate(8deg) scale(1.05);
+        }
+        
+        .glow-effect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+        }
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.2, 0.9, 0.4, 1);
+        }
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #0e0e1a;
+            color: #bbb;
+        }
+        
+        @media (max-width: 850px) {
+            .partner-container { flex-direction: column !important; text-align: center; gap: 30px; }
+            .partner-full { padding: 80px 24px; }
+            .partner-text h2 { font-size: 1.8rem; }
+            .overlap-container .img-front {
+                position: relative;
+                top: -30px;
+                right: 0;
+                width: 180px;
+                height: 180px;
+            }
+            .overlap-container .img-back {
+                width: 220px;
+                height: 220px;
+            }
+            .overlap-container { min-height: 280px; }
+        }
+        @media (max-width: 500px) {
+            .partner-full { padding: 60px 16px; }
+            .partner-text h2 { font-size: 1.5rem; }
+            .partner-text p { font-size: 0.9rem; }
+            .partner-btn { padding: 10px 24px; font-size: 0.8rem; }
+            .partner-img img { max-height: 250px; }
+            .overlap-container .img-front { width: 140px; height: 140px; }
+            .overlap-container .img-back { width: 180px; height: 180px; }
+            .overlap-container { min-height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== UPDATED NAVBAR WITH BLACK TEXT ===== -->
+<div style="padding: 12px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: rgba(245, 245, 245, 0.95); backdrop-filter: blur(16px); border-radius: 60px; margin-top: 20px; margin-bottom: 30px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.05); position: sticky; top: 20px; z-index: 1000; transition: all 0.4s ease;">
+    <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 800; color: #000000; letter-spacing: -0.5px;">
+        <img src="partners/elephante.png" alt="Elephante Commons" style="height: 40px; width: auto; object-fit: contain; border-radius: 4px;">
+        <span>ELEPHANTE <span style="color: #c0392b;">COMMONS</span></span>
+    </a>
+    <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+        <a href="index.html" style="text-decoration: none; font-weight: 600; color: #000000; padding: 8px 18px; transition: all 0.3s ease; font-size: 0.85rem; border-radius: 30px;" onmouseover="this.style.color='#e8436e'; this.style.background='rgba(232,67,110,0.1)'" onmouseout="this.style.color='#000000'; this.style.background='transparent'">HOME</a>
+        <a href="about.html" style="text-decoration: none; font-weight: 600; color: #000000; padding: 8px 18px; transition: all 0.3s ease; font-size: 0.85rem; border-radius: 30px;" onmouseover="this.style.color='#e8436e'; this.style.background='rgba(232,67,110,0.1)'" onmouseout="this.style.color='#000000'; this.style.background='transparent'">ABOUT</a>
+        <a href="menu.html" style="text-decoration: none; font-weight: 600; color: #000000; padding: 8px 18px; transition: all 0.3s ease; font-size: 0.85rem; border-radius: 30px;" onmouseover="this.style.color='#e8436e'; this.style.background='rgba(232,67,110,0.1)'" onmouseout="this.style.color='#000000'; this.style.background='transparent'">MENU</a>
+        <a href="space.html" style="text-decoration: none; font-weight: 600; color: #000000; padding: 8px 18px; transition: all 0.3s ease; font-size: 0.85rem; border-radius: 30px;" onmouseover="this.style.color='#e8436e'; this.style.background='rgba(232,67,110,0.1)'" onmouseout="this.style.color='#000000'; this.style.background='transparent'">SPACES</a>
+        <a href="partner.html" style="text-decoration: none; font-weight: 600; padding: 8px 18px; transition: all 0.3s ease; font-size: 0.85rem; border-radius: 30px; background: rgba(192,57,43,0.15); color: #c0392b;" onmouseover="this.style.color='#e8436e'; this.style.background='rgba(232,67,110,0.2)'" onmouseout="this.style.color='#c0392b'; this.style.background='rgba(192,57,43,0.15)'">PARTNERS</a>
+        <a href="connect.html" style="text-decoration: none; font-weight: 600; padding: 8px 24px; transition: all 0.3s ease; font-size: 0.85rem; border-radius: 30px; background: linear-gradient(135deg, #c0392b, #e8433a); color: white;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 30px rgba(192,57,43,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">CONNECT</a>
+    </div>
+</div>
+
+<!-- Intro section -->
+<section id="home" class="partner-full" style="background: radial-gradient(circle at 10% 30%, #f0e6ff, #d9c8ff); color: #2e1a5e;">
+    <div class="bg-pattern" style="background-image: radial-gradient(#4c2b7c 1.5px, transparent 1.5px); background-size: 30px 30px;"></div>
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif;">🌟 Common Heroes<br>for the Common Good</h2>
+            <p style="font-size:1.1rem;">When you get to know our partners you will understand why we love what we do! Elephante exists to support leaders in Northern Uganda. Each partner brings a unique flavor of innovation, courage, and hope.</p>
+            <a href="#partners-start" class="partner-btn" style="background:#e8436e; color:white; border:none; box-shadow: 0 10px 20px rgba(232,67,110,0.3);">DISCOVER PARTNERS ↓</a>
+        </div>
+        <div class="partner-img"><img src="partners/elephante.png" style="border-radius: 50px; max-height: 300px;" alt="Welcome" onerror="this.src='https://placehold.co/600x400/7b4f9e/ffffff?text=Elephante+Commons'"></div>
+    </div>
+</section>
+
+<div id="partners-start"></div>
+
+<!-- 1. HAVEN for humanity -->
+<section class="partner-full" style="background: linear-gradient(125deg, #2d0b5e, #1a0640); color: white; position: relative;">
+    <div class="glow-effect" style="background: #9b59b6; top: -100px; right: -100px;"></div>
+    <div class="glow-effect" style="background: #e8436e; bottom: -80px; left: -80px;"></div>
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif;"><i class="fas fa-hand-holding-heart"></i> HAVEN for humanity</h2>
+            <p>Haven for Humanity Uganda is a community-rooted nonprofit in Northern Uganda and the West Nile region addressing child malnutrition and family vulnerability with long-term, dignity-based solutions. Through integrated pillars in health, nutrition, economic empowerment, psychosocial support, and education, HHU provides treatment and prevention services while strengthening families through savings groups and income-generating activities. Centered on women's leadership and community resilience, HHU walks alongside families to build stability and opportunity - not short-term aid.</p>
+            <a href="https://havenforhumanityuganda.org/" class="partner-btn" style="background: #e8436e; color: white; border: none; box-shadow: 0 10px 20px rgba(232,67,110,0.3);">VISIT WEBSITE →</a>
+        </div>
+        <div class="partner-img"><img class="blob-img" src="partners/Havenforhumanity.avif" style="border: 3px solid #e8436e;" alt="Haven" onerror="this.src='https://placehold.co/400x400/6a3a9a/ffffff?text=HAVEN'"><p class="img-label"></p></div>
+    </div>
+</section>
+
+<!-- 2. Gender Tech -->
+<section class="partner-full" style="background: #ffffff; color: #1a1a2e;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2 style="font-weight: 800; letter-spacing: -0.02em; color: #1a1a2e;"><i class="fas fa-laptop-code"></i> Gender Tech Initiative</h2>
+            <p>Gender Tech Initiative Uganda equips women and girls in STEM and ICT with the skills, mentorship, and support they need to build technology careers. The initiative addresses barriers like online harassment, limited early exposure, and lack of mentorship through programs in digital safety, cybersecurity, digital marketing, and school ICT clubs. Gender Tech helps participants use technology to grow businesses, stay safe online, and step into leadership.</p>
+            <a href="https://www.facebook.com/GenderTechInitiativeUganda" class="partner-btn" style="background: #1a1a2e; color: white; border: none;">VISIT FACEBOOK PAGE →</a>
+        </div>
+        <div class="partner-img"><img class="squircle-img" src="partners/GenderTech1.avif" alt="Gender Tech" onerror="this.src='https://placehold.co/400x400/3a7bd5/ffffff?text=Gender+Tech'"><p class="img-label"></p></div>
+    </div>
+</section>
+
+<!-- 3. Wokober Education -->
+<section class="partner-full" style="background: radial-gradient(circle at 80% 20%, #2a6fd1, #154b9e); color: white;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="text-decoration: underline; text-decoration-color: #e8436e; text-underline-offset: 15px;"><i class="fas fa-graduation-cap"></i> Wokober Education</h2>
+            <p>Wokober Education Foundation is reimagining education in Northern Uganda by shifting learning from exams to creativity, experimentation, and problem-solving. Built on the belief that children and youth have immense potential that systems often limit, Wokober uses hands-on STEAM learning, innovation clubs, and community programs to help learners build, design, and create solutions rooted in Acholi lived experience.</p>
+            <a href="https://www.wokober.com/" class="partner-btn" style="background: #e8436e; color: white; border: none;">VISIT WEBSITE →</a>
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <img src="partners/wokobereducation1.avif" style="border-radius: 15px; border: 2px solid rgba(255,255,255,0.2); max-height: 260px;" alt="Wokober" onerror="this.src='https://placehold.co/400x300/2f7de0/ffffff?text=Wokober'">
+            <img src="partners/wokobereducation2.avif" style="border-radius: 15px; border: 2px solid rgba(255,255,255,0.2); max-height: 260px;" alt="Wokober" onerror="this.src='https://placehold.co/400x300/2f7de0/ffffff?text=Wokober'">
+        </div>
+    </div>
+</section>
+
+<!-- 4. River Poultry -->
+<section class="partner-full" style="background: #ffffff; color: #8b2c2c; position: relative;">
+    <div style="position: absolute; top: 30px; right: 40px; z-index: 10;">
+        <img src="partners/RIVERPOULTRYlogo.avif" alt="River Poultry Logo" style="width: 70px; height: 70px; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: 3px solid #dc3545;" onerror="this.style.display='none'">
+    </div>
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px;">
+                <img src="partners/river_poultry_f_logo.jpg" alt="Logo" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid #dc3545;" onerror="this.style.display='none'">
+                <h2 style="font-family: 'Poppins', sans-serif; font-weight: 900; margin-bottom: 0; color: #dc3545;"><i class="fas fa-drumstick-bite"></i> River Poultry</h2>
+            </div>
+            <p>River Poultry is transforming poultry farming in Northern Uganda with technology that strengthens farmer livelihoods and improves food security. Using AI-powered tools, the company helps farmers monitor flock health, access vaccinations, and manage farms efficiently, reducing mortality and lowering costs.</p>
+            <a href="https://www.riverpoultry.com/" class="partner-btn" style="background: #dc3545; color: white; border: none; box-shadow: 0 10px 20px rgba(220,53,69,0.3);">VISIT WEBSITE →</a>
+        </div>
+        <div class="partner-img">
+            <img class="circle-img" src="partners\riverpoultry_JPG.avif" style="width: 280px; height: 280px; border: 3px solid #dc3545;" alt="River Poultry" onerror="this.src='https://placehold.co/300x300/dc3545/ffffff?text=River+Poultry'">
+            <p class="img-label"></p>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Ajura Styles -->
+<section class="partner-full" style="background: #0a0a0a; color: #f0e6ff; position: relative; overflow: hidden;">
+    <div class="glow-effect" style="background: #e8436e; top: 30%; left: -80px; filter: blur(100px);"></div>
+    <div class="glow-effect" style="background: #2e7d32; bottom: 20%; right: -80px; filter: blur(100px); opacity: 0.3;"></div>
+    <div class="partner-container image-below fade-up">
+        <div class="partner-text" style="text-align: center;">
+            <h2 style="font-family: 'Playfair Display', serif; color: #e8c97a;"><i class="fas fa-tshirt"></i> AJURA STYLES</h2>
+            <p>Ajura Styles is rewriting fashion in Northern Uganda by proving that African clothing can be ethical, globally relevant, and deeply personal. In response to fast fashion and second-hand imports, Ajura creates locally produced garments using biodegradable linen, natural dyes, and eco-printing. The brand trains and employs young women in tailoring, dyeing, and printing, building real jobs and lasting skills.</p>
+            <a href="https://www.instagram.com/ajura_clothes?igsh=MWFqZGwwa3dqdm5icw==" class="partner-btn" style="background: #2e7d32; color: white; border: none; box-shadow: 0 10px 20px rgba(46,125,50,0.3);">VISIT INSTAGRAM →</a>
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <img class="octagon-img" src="partners\AJURASTYLES1.avif" alt="Ajura Style 1" style="width: 240px; height: 240px; border: 2px solid #e8c97a;" onerror="this.src='https://placehold.co/260x260/2a2a2a/e8c97a?text=Ajura'">
+            <img class="octagon-img" src="partners\AJURASTYLES2.avif" alt="Ajura Style 2" style="width: 240px; height: 240px; border: 2px solid #e8c97a;" onerror="this.src='https://placehold.co/260x260/2a2a2a/e8c97a?text=Ajura'">
+            <p class="img-label" style="width:100%; color:#e8c97a80;"></p>
+        </div>
+    </div>
+</section>
+
+<!-- 6. Afro Lab -->
+<section class="partner-full" style="background: #ffffff; color: #2d1a3a; border-bottom: 5px solid #e8436e;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-weight: 800; color: #e8436e;"><i class="fas fa-music"></i> AFRO LAB</h2>
+            <p>Afro Lab is changing the rhythm of Gulu by creating a safe, inclusive space where young people can learn, create, and build futures through music and art. Blending traditional African storytelling with modern sounds, Afro Lab supports healing, self-expression, and skill-building for vulnerable youth. Their work has mentored young DJs and artists, built youth-led creative teams, and organized major community events.</p>
+            <a href="https://afrolab-ug.com/" class="partner-btn" style="background: #e8436e; color: white; border: none;">VISIT WEBSITE →</a>
+        </div>
+        <div class="partner-img"><img class="flower-img" src="partners/afrolab1.avif" alt="Afro Lab" style="border: 3px solid #e8436e;" onerror="this.src='https://placehold.co/400x400/e8436e/ffffff?text=Afro+Lab'"><p class="img-label"></p></div>
+    </div>
+</section>
+
+<!-- 7. Christ Central -->
+<section class="partner-full" style="background: linear-gradient(145deg, #cf0650, #f59ec0); color: #4a1a3a;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif;"><i class="fas fa-church"></i> Christ Central Church</h2>
+            <p>Christ Central Community Church is a Gospel-centered church in Gulu, founded in 2019 to preach Christ with clarity and see lives transformed. The church reaches villages facing poverty and spiritual neglect through monthly outreach and Bible distribution, while also strengthening leaders through training and a radio ministry.</p>
+            
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <img class="cube-img" src="partners/Christcentral1.avif" style="border: 3px solid rgba(255,255,255,0.3); border-radius: 15px; max-height: 240px;" alt="Christ Central" onerror="this.src='https://placehold.co/400x300/6b1e42/ffffff?text=Christ+Central'">
+            <img class="cube-img" src="partners/Christcentral2.avif" style="border: 3px solid rgba(255,255,255,0.3); border-radius: 15px; max-height: 240px;" alt="Christ Central" onerror="this.src='https://placehold.co/400x300/6b1e42/ffffff?text=Christ+Central'">
+        </div>
+    </div>
+</section>
+
+<!-- 8. Stress Clinic -->
+<section class="partner-full" style="background: linear-gradient(115deg, #fff9c4, #ffffff); color: #6b2e2e;">
+    <div class="partner-container fade-up" style="justify-content: space-between;">
+        <div class="partner-img" style="flex: 0.7;"><img class="hexagon-img" src="partners/stressclinic2.avif" alt="Stress Clinic" style="border: 3px solid #c0392b; max-height: 260px;" onerror="this.src='https://placehold.co/300x300/c0392b/ffffff?text=Stress+Clinic'"><p class="img-label"></p></div>
+        <div class="partner-text" style="flex: 1.5;">
+            <h2 style="border-left: 8px solid #c0392b; padding-left: 20px;"><i class="fas fa-brain"></i> STRESS CLINIC Uganda</h2>
+            <p>Stress Clinic Uganda is a mental health and community development organization serving marginalized communities in Northern Uganda through holistic care and support. Guided by "Rescue, Respond, Rejuvenate," the clinic offers counseling, mentorship, therapy, and digital support to youth, women, and refugees.</p>
+            <a href="http://www.stressclinic.africa/" class="partner-btn" style="background: #c0392b; color: white; border: none;">VISIT WEBSITE →</a>
+        </div>
+        <div class="partner-img" style="flex: 0.7;"><img class="hexagon-img" src="partners/stressclinic1.avif" alt="Stress Clinic" style="border: 3px solid #c0392b; max-height: 260px;" onerror="this.src='https://placehold.co/300x300/c0392b/ffffff?text=Stress+Clinic'"><p class="img-label"></p></div>
+    </div>
+</section>
+
+<!-- 9. Loremi Tours -->
+<section class="partner-full" style="background: #ffffff; color: #1a3a2a;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #2e7d32;"><i class="fas fa-compass"></i> LOREMI TOURS</h2>
+            <p>Loremi Tours is a community-centered tourism company in Gulu that uses travel to create local jobs and celebrate Acholi culture. By designing immersive experiences - homestays, cultural activities, safaris, and community events - Loremi ensures tourism benefits women, artisans, guides, and hosts rather than outside interests. The company builds ethical, locally driven tourism that preserves cultural knowledge, generates reliable income, and connects visitors to real stories and everyday life.</p>
+            <a href="https://www.loremitours.com/" class="partner-btn" style="background: #2e7d32; color: white; border: none; box-shadow: 0 10px 20px rgba(46,125,50,0.3);">VISIT WEBSITE →</a>
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <img class="wave-img" src="partners/LoremiTours2.avif" alt="Loremi Tours" style="border: 3px solid #2e7d32; max-height: 240px;" onerror="this.src='https://placehold.co/400x400/2e7d32/ffffff?text=Loremi'">
+            <img class="wave-img" src="partners/LoremiTours1.avif" style="border: 3px solid #2e7d32; max-height: 240px;" onerror="this.src='https://placehold.co/400x400/2e7d32/ffffff?text=Loremi'">
+        </div>
+    </div>
+</section>
+
+<!-- 10. Bolcoms -->
+<section class="partner-full" style="background: linear-gradient(145deg, #1e5faf, #0c3a6e); color: white;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2><i class="fas fa-chart-line"></i> Bolcoms Ventures</h2>
+            <p>Bolcoms Ventures is strengthening Northern Uganda's digital and creative landscape by helping local businesses, nonprofits, and community groups be seen, trusted, and supported. Bolcoms provides design, printing, websites, media production, and ICT support. They also train youth in web design and digital skills, creating income pathways and professional opportunities.</p>
+            <a href="https://bolcoms.com/#" class="partner-btn" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.4); color: white;">LEARN MORE →</a>
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <img class="shield-img" src="partners/bolcomsventures1.avif" alt="Bolcoms" style="border: 2px solid rgba(255,255,255,0.3); max-height: 240px;" onerror="this.src='https://placehold.co/400x400/0c3a6e/ffffff?text=Bolcoms'">
+            <img class="shield-img" src="partners/bolcomsventures2.avif" alt="Bolcoms" style="border: 2px solid rgba(255,255,255,0.3); max-height: 240px;" onerror="this.src='https://placehold.co/400x400/0c3a6e/ffffff?text=Bolcoms'">
+        </div>
+    </div>
+</section>
+
+<!-- 11. Backup Uganda -->
+<section class="partner-full" style="background: linear-gradient(135deg, #e57373, #ef9a9a); color: white;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2><i class="fas fa-child"></i> BackUp Uganda</h2>
+            <p>Backup Uganda is a non-profit dedicated to ensuring every child in Uganda, including those with learning difficulties and disabilities, receives the support they need to succeed. By training teachers, equipping families, and advocating for inclusive practices, Backup Uganda helps schools adapt teaching to meet diverse learning needs.</p>
+            <a href="https://www.backupuganda.org/" class="partner-btn" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.4); color: white;">VISIT WEBSITE →</a>
+        </div>
+        <div class="partner-img"><img class="rounded-pill-img" src="partners/BackUpuganda.avif" alt="BackUp" style="border: 3px solid rgba(255,255,255,0.3); max-height: 300px;" onerror="this.src='https://placehold.co/400x300/ef9a9a/ffffff?text=BackUp'"><p class="img-label"></p></div>
+    </div>
+</section>
+
+<!-- 12. Hashtag Gulu -->
+<section class="partner-full" style="background: #ffffff; color: #4a148c;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-weight: 900; letter-spacing: -0.03em; color: #4a148c;"><i class="fas fa-hashtag"></i> HASHTAG GULU</h2>
+            <p>"Street kids" (or more considerately called kids who live and work on the street) are stigmatized by many in the community as violent criminals. But not by Hashtag Gulu. This group of young volunteers values these kids and wants to see them reach their highest potential. At Elephante, they have created a hub for mentorship, life skills, and vocational training with the end goal being to integrate them into society.</p>
+            <a href="https://hashtaggulu.org/" class="partner-btn" style="background: #4a148c; color: white; border: none; box-shadow: 0 10px 20px rgba(74,20,140,0.3);">VISIT HASHTAG'S WEBSITE →</a>
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <img class="parallelogram-img" src="partners/HashTag1.avif" alt="Hashtag Gulu" style="border: 3px solid #4a148c; max-height: 240px;" onerror="this.src='https://placehold.co/400x300/4a148c/ffffff?text=Hashtag+Gulu'">
+            <img class="parallelogram-img" src="partners/HashTag2.avif" alt="Hashtag Gulu" style="border: 3px solid #4a148c; max-height: 240px;" onerror="this.src='https://placehold.co/400x300/4a148c/ffffff?text=Hashtag+Gulu'">
+        </div>
+    </div>
+</section>
+
+<!-- 13. Kijani Forestry -->
+<section class="partner-full" style="background: linear-gradient(145deg, #1e6b4a, #0e4a32); color: white;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2><i class="fas fa-tree"></i> Kijani Forestry Limited</h2>
+            <p>Kijani Forestry Limited is a community-driven forestry company in Northern Uganda restoring landscapes and strengthening livelihoods through sustainable tree-planting and agroforestry systems. By placing smallholder farmers at the center, Kijani supports long-term land restoration and climate resilience while helping families diversify income.</p>
+            <a href="https://www.kijaniforestry.com/" class="partner-btn" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.4); color: white;">VISIT WEBSITE →</a>
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <img class="flower-img" src="partners\Kijani1.avif" alt="Kijani" style="border: 2px solid rgba(255,255,255,0.3); max-height: 240px;" onerror="this.src='https://placehold.co/400x300/2d6a4f/ffffff?text=Kijani'">
+            <img class="flower-img" src="partners\Kijani2.avif" alt="Kijani" style="border: 2px solid rgba(255,255,255,0.3); max-height: 240px;" onerror="this.src='https://placehold.co/400x300/2d6a4f/ffffff?text=Kijani'">
+        </div>
+    </div>
+</section>
+
+<!-- 14. NUFA -->
+<section class="partner-full" style="background: #ffffff; color: #1a1a2e;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #e65100;"><i class="fas fa-film"></i> NUFA</h2>
+            <p>Northern Uganda Filmmakers Association (NUFA) unites filmmakers across the region, giving creatives a collective voice and the tools to tell authentic stories from their own communities. Through hands-on trainings, workshops, and professional guilds, NUFA equips members with practical skills in camera, editing, acting, and production, strengthening the local film ecosystem. By promoting regional talent through screenings and community engagement, NUFA inspires youth and builds opportunities for sustainable film careers.</p>
+            <a href="https://www.nufa.media/" class="partner-btn" style="background: #e65100; color: white; border: none; box-shadow: 0 10px 20px rgba(230,81,0,0.3);">VISIT NUFA'S WEBSITE →</a>
+        </div>
+        <div class="partner-img overlap-container" style="min-height: 320px;">
+            <img class="blob-img img-back" src="partners/NUFA2.avif" alt="NUFA" style="width: 260px; height: 260px; border: 2px solid #e65100;" onerror="this.src='https://placehold.co/280x280/e65100/ffffff?text=NUFA'">
+            <img class="blob-img img-front" src="partners/NUFA1.avif" style="width: 180px; height: 180px; top: 10px; right: -10px; border-color: #e65100;" onerror="this.src='https://placehold.co/200x200/e65100/ffffff?text=NUFA'">
+            <p class="img-label" style="position: absolute; bottom: -30px; width: 100%;">Empowering filmmakers</p>
+        </div>
+    </div>
+</section>
+
+<!-- 15. Northern Oasis Spa -->
+<section class="partner-full" style="background: linear-gradient(145deg, #a5d6a7, #81c784); color: white;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif;"><i class="fas fa-spa"></i> NORTHERN OASIS SPA</h2>
+            <p>Northern Oasis Spa is a wellness organization in Gulu bringing professional relaxation massage directly to people's homes and workplaces. Created to address the growing lack of time and access to self-care, the spa offers convenient, consistent, and personalized services for busy professionals, pregnant women, and athletes. Through door-to-door wellness care, Northern Oasis Spa helps clients recover, reduce stress, and improve overall health while building a trusted, local approach to wellbeing.</p>
+            <a href="" class="partner-btn" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.4); color: white;"><i class="fab fa-whatsapp"></i> CALL ON WHATSAPP TO BOOK</a>
+        </div>
+        <div class="partner-img"><img class="circle-img" src="partners\Northern1.avif" alt="Northern Oasis Spa" style="border: 3px solid rgba(255,255,255,0.3); width: 280px; height: 280px;" onerror="this.src='https://placehold.co/300x300/81c784/ffffff?text=Northern+Oasis'"><p class="img-label"></p></div>
+    </div>
+</section>
+
+<!-- 16. Kalokelo Studios -->
+<section class="partner-full" style="background: #ffffff; color: #1a1a2e;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #1a1a2e;"><i class="fas fa-paint-brush"></i> KALOKELO STUDIOS</h2>
+            <p>Kalokelo Studios is a community-based creative arts initiative in Gulu using art as a tool for healing, expression, and recovery. Working with children and youth affected by conflict, trauma, and substance abuse, the studio uses drawing, painting, theatre, dance, and storytelling to strengthen emotional resilience and rebuild confidence. Through public exhibitions, murals, and community drama, Kalokelo opens dialogue around mental health and reduces stigma, turning lived experience into positive community influence.</p>
+            <a href="https://www.instagram.com/kal.okelo_the_painter?igsh=MXV0YWl0ZzV1aXRkMQ%3D%3D" class="partner-btn" style="background: #1a1a2e; color: white; border: none;">VISIT THEIR INSTAGRAM →</a>
+        </div>
+        <div class="partner-img"><img class="starburst-img" src="partners/kalokelo.avif" alt="Kalokelo Studios" style="border: 3px solid #1a1a2e; max-height: 300px;" onerror="this.src='https://placehold.co/400x300/1a1a2e/ffffff?text=Kalokelo'"><p class="img-label"></p></div>
+    </div>
+</section>
+
+<!-- 17. Mighty Youth Ministries -->
+<section class="partner-full" style="background: #93b57d; color: #1a1a2e;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #2e7d32;"><i class="fas fa-users"></i> MIGHTY YOUTH MINISTRIES</h2>
+            <p>Mighty Youth Ministries is a faith-based movement in Gulu mentoring young people through fellowship, school outreach, and honest conversation. Walking closely with youth facing school dropout, addiction, and teen pregnancy, they are shaping a generation that leads with clarity, integrity, resilience, and a strong sense of purpose.</p>
+            <a href="https://www.readforlifeug.org/" class="partner-btn" style="background: #2e7d32; color: white; border: none; box-shadow: 0 10px 20px rgba(46,125,50,0.3);">CHECK OUT THEIR SOCIAL MEDIA →</a>
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 500px;">
+            <div style="display: flex; width: 100%; justify-content: center; gap: 12px;">
+                <img class="shield-img" src="partners/mightyyouth1.avif" alt="Mighty Youth Ministries" style="width: 180px; height: 180px; border: 3px solid #2e7d32;" onerror="this.src='https://placehold.co/200x200/2e7d32/ffffff?text=Mighty'">
+                <img class="shield-img" src="partners/mightyyouth2.avif" alt="Mighty Youth Ministries" style="width: 180px; height: 180px; border: 3px solid #2e7d32;" onerror="this.src='https://placehold.co/200x200/2e7d32/ffffff?text=Mighty'">
+            </div>
+            <p class="img-label" style="width:100%;">mighty1-3.avif</p>
+        </div>
+    </div>
+</section>
+
+<!-- 18. Acta Event Designs -->
+<section class="partner-full" style="background: linear-gradient(135deg, #4a148c, #6a1b9a); color: white;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2><i class="fas fa-calendar-alt"></i> ACTA Event Designs</h2>
+            <p>ACTA Design & Events is a creative production and design company providing professional event services, including lighting, sound, staging, and media production. By offering hands-on training in technical and creative skills, ACTA equips young people with real-world experience, creating employment opportunities and strengthening the region's creative economy.</p>
+            <a href="https://www.instagram.com/acta_events?igsh=MW10OGQxY3FmZzJrNw%3D%3D" class="partner-btn" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.4); color: white;">TAKE A LOOK AT INSTAGRAM →</a>
+        </div>
+        <div class="partner-img"><img class="teardrop-img" src="partners\Acta2.avif" alt="ACTA" style="border: 2px solid rgba(255,255,255,0.3); max-height: 280px;" onerror="this.src='https://placehold.co/400x300/6a1b9a/ffffff?text=ACTA'"><p class="img-label"></p></div>
+    </div>
+</section>
+
+<!-- 19. Mtindo Designs -->
+<section class="partner-full" style="background: linear-gradient(145deg, #f8bbd0, #f48fb1); color: white;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif;"><i class="fas fa-tshirt"></i> MTINDO DESIGNS</h2>
+            <p>Mtindo is a women-led social enterprise in Uganda that turns training into real employment through a hybrid tailoring academy and production studio. Women - especially early school leavers and unemployed youth - learn practical skills, gain hands-on experience, and move into dignified work that earns income and builds independence. Profits from production are reinvested to train more women, creating a self-sustaining cycle of opportunity. Mtindo is building a future where women lead in Uganda's apparel industry, not just as workers, but as skilled creators and leaders.</p>
+            <a href="http://mtindo.org/" class="partner-btn" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.4); color: white;">VISIT MTINDO'S WEBSITE →</a>
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <img class="flower-img" src="partners\Mtindo1.avif" alt="Mtindo Designs" style="border: 3px solid rgba(255,255,255,0.3); max-height: 240px;" onerror="this.src='https://placehold.co/400x300/f48fb1/ffffff?text=Mtindo'">
+            <img class="flower-img" src="partners/mtindo2.avif" alt="Mtindo Designs" style="border: 3px solid rgba(255,255,255,0.3); max-height: 240px;" onerror="this.src='https://placehold.co/400x300/f48fb1/ffffff?text=Mtindo'">
+        </div>
+    </div>
+</section>
+
+<!-- 20. Agamega -->
+<section class="partner-full" style="background: #ffffff; color: #1a1a2e;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #2e7d32;"><i class="fas fa-seedling"></i> AGAMEGA</h2>
+            <p style="color: #1a1a2e;">While most of the urban population is moving away from farming, Deo, founder of Agamega Agro Enterprise, is innovating it and dare we say, making it trendy again. Deo is pursuing crops others shy away from, like oyster mushrooms, and he is sharing his experience and knowledge with other members of the community so they can also create their own successful farm. Deo isn't afraid to think big and we know farming in Uganda will be carried further with him around.</p>
+            <a href="https://www.facebook.com/Agamega-Agro-Enterprise-Dealing-in-Oyster-Mushroom-997660046993031/" class="partner-btn" style="background: #2e7d32; color: white; border: none; box-shadow: 0 10px 20px rgba(46,125,50,0.3);">CONTACT AGAMEGA →</a>
+        </div>
+        <div class="partner-img"><img class="hexagon-img" src="partners\Agamega.avif" alt="Agamega" style="border: 3px solid #2e7d32; max-height: 280px;" onerror="this.src='https://placehold.co/400x300/2e7d32/ffffff?text=Agamega'"><p class="img-label"></p></div>
+    </div>
+</section>
+
+<!-- 21. Ribbo Coffee -->
+<section class="partner-full" style="background: #0a0a0a; color: white;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif;"><i class="fas fa-mug-hot"></i> RIBBO COFFEE</h2>
+            <p>Ribbo Coffee is a Northern Uganda coffee enterprise building a stronger, more sustainable coffee economy by working directly with farmers and partners to improve quality, fairness, and production standards. The company offers roasting, green and roasted bean sales, white-label coffee, and immersive coffee experiences that connect people to ethical farming from seed to cup. With a focus on consistency, environmental care, and farmer dignity, Ribbo Coffee is shaping a future where great coffee supports thriving communities and a healthier landscape.</p>
+            <a href="https://www.ribbocoffee.com/" class="partner-btn" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.4); color: white;">VISIT RIBBO'S WEBSITE →</a>
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <img class="squircle-img" src="partners/Ribbo2.avif" alt="Ribbo Coffee" style="border: 2px solid rgba(255,255,255,0.3); max-height: 240px;" onerror="this.src='https://placehold.co/400x300/0a0a0a/ffffff?text=Ribbo'">
+            <img class="squircle-img" src="partners/Ribbo1.avif" alt="Ribbo Coffee" style="border: 2px solid rgba(255,255,255,0.3); max-height: 240px;" onerror="this.src='https://placehold.co/400x300/0a0a0a/ffffff?text=Ribbo'">
+        </div>
+    </div>
+</section>
+
+<!-- 22. Watwero Dance Initiative -->
+<section class="partner-full" style="background: #ffffff; color: #1a1a2e;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #c62828;"><i class="fas fa-dance"></i> WATWERO DANCE INITIATIVE</h2>
+            <p>Watwero Dance Initiative is a creative arts organization in Northern Uganda that uses dance and cultural storytelling to help trauma-affected youth heal, express themselves, and build community. Guided by the philosophy of "Watwero" ("We Can"), the initiative was shaped by Geoffrey Oryema's journey of survival and healing through dance. By training and employing local creatives and running community dance programs, Watwero turns performance into healing, dialogue, and opportunity - proving that culture and creativity can rebuild lives after conflict.</p>
+            <a href="https://watwerodancecompany.com/" class="partner-btn" style="background: #c62828; color: white; border: none; box-shadow: 0 10px 20px rgba(198,40,40,0.3);">LEARN MORE →</a>
+        </div>
+        <div class="partner-img overlap-container" style="min-height: 320px;">
+            <img class="frame-img img-back" src="partners/watwero3.avif" alt="Watwero Dance Initiative" style="width: 240px; height: 240px; border: 3px solid #c62828; border-radius: 20px;" onerror="this.src='https://placehold.co/260x260/c62828/ffffff?text=Watwero'">
+            <img class="frame-img img-front" src="partners/watwero1.avif" alt="Watwero Dance Initiative" style="width: 180px; height: 180px; top: 20px; right: -10px; border: 3px solid #c62828; border-radius: 20px;" onerror="this.src='https://placehold.co/200x200/c62828/ffffff?text=Watwero'">
+            <p class="img-label" style="position: absolute; bottom: -30px; width: 100%;">Healing through dance</p>
+        </div>
+    </div>
+</section>
+
+<!-- 23. Dan's Meat Ltd -->
+<section class="partner-full" style="background: #ffffff; color: #4e342e;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #c62828;"><i class="fas fa-drumstick-bite"></i> DAN'S MEAT LTD</h2>
+            <p>Dan's Meat Ltd is a fresh meat store in Gulu providing safe, high-quality poultry, beef, and pork to families and businesses across Northern Uganda. In a region where poor meat quality can lead to illness, Dan's Meat ensures strict hygiene and transparency, building trust through consistent products and customer education. By serving restaurants, cafés, and households with reliable, affordable meat, the company strengthens community health and food safety while expanding access to quality protein.</p>
+            <a href="https://www.housetohouseuganda.org/" class="partner-btn" style="background: #c62828; color: white; border: none; box-shadow: 0 10px 20px rgba(198,40,40,0.3);">CONTACT THEM →</a>
+        </div>
+        <div class="partner-img overlap-container" style="min-height: 320px;">
+            <img class="frame-img img-back" src="partners/Dan'sMeat1.avif" alt="Dan's Meat Ltd" style="width: 240px; height: 240px; border: 3px solid #c62828; border-radius: 20px;" onerror="this.src='https://placehold.co/260x260/c62828/ffffff?text=Dan%27s+Meat'">
+            <img class="frame-img img-front" src="partners/Dan'sMeat.avif" alt="Dan's Meat Ltd" style="width: 180px; height: 180px; top: 20px; right: -10px; border: 3px solid #c62828; border-radius: 20px;" onerror="this.src='https://placehold.co/200x200/c62828/ffffff?text=Dan%27s+Meat'">
+            <p class="img-label" style="position: absolute; bottom: -30px; width: 100%;">Quality meat you can trust</p>
+        </div>
+    </div>
+</section>
+
+<!-- 24. VISO -->
+<section class="partner-full" style="background: #ffffff; color: #1a1a2e;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #2e7d32;"><i class="fas fa-hands-helping"></i> VISO</h2>
+            <p>Voluntary Initiative Support Organisation (VISO) is a community-rooted organization founded by young volunteers in 2005 to support recovery in Northern Uganda. Through programs in livelihoods, education, peacebuilding, and climate resilience, VISO equips communities to lead sustainable, locally driven development.</p>
+            <a href="https://www.viso-ug.org/" class="partner-btn" style="background: #2e7d32; color: white; border: none; box-shadow: 0 10px 20px rgba(46,125,50,0.3);">VISIT VISO'S WEBSITE →</a>
+        </div>
+        <div class="partner-img overlap-container" style="min-height: 320px;">
+            <img class="frame-img img-back" src="partners\viso2.avif" alt="VISO" style="width: 240px; height: 240px; border: 3px solid #2e7d32; border-radius: 20px;" onerror="this.src='https://placehold.co/260x260/2e7d32/ffffff?text=VISO'">
+            <img class="frame-img img-front" src="partners/VISO1.avif" alt="VISO" style="width: 180px; height: 180px; top: 20px; right: -10px; border: 3px solid #2e7d32; border-radius: 20px;" onerror="this.src='https://placehold.co/200x200/2e7d32/ffffff?text=VISO'">
+            <p class="img-label" style="position: absolute; bottom: -30px; width: 100%;">VISO1.avif | VISO.avif</p>
+        </div>
+    </div>
+</section>
+
+<!-- 25. INK Liners -->
+<section class="partner-full" style="background: linear-gradient(145deg, #0d47a1, #1a237e); color: white;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #64b5f6;"><i class="fas fa-pen-fancy"></i> INK LINERS</h2>
+            <p>INK Liners is a space for creatives to share their art with the world. Hosting events on a regular basis, you will see a wide variety of performances from spoken word poetry, to dances, to music, and there's always a few surprises too! You can see when the next INK Liners event will be here!</p>
+            <a href="https://www.facebook.com/inkliners/" class="partner-btn" style="background: #64b5f6; color: #1a237e; border: none; box-shadow: 0 10px 20px rgba(100,181,246,0.3);">VISIT INK LINERS ON FACEBOOK →</a>
+        </div>
+        <div class="partner-img overlap-container" style="min-height: 320px;">
+            <img class="blob-img img-back" src="partners/Inkliners2.avif" alt="INK Liners" style="width: 240px; height: 240px; border: 3px solid #64b5f6;" onerror="this.src='https://placehold.co/260x260/64b5f6/1a237e?text=INK'">
+            <img class="blob-img img-front" src="partners/Inkliners.avif" alt="INK Liners" style="width: 180px; height: 180px; top: 20px; right: -10px; border: 3px solid #64b5f6;" onerror="this.src='https://placehold.co/200x200/64b5f6/1a237e?text=INK'">
+            <p class="img-label" style="position: absolute; bottom: -30px; width: 100%; color: #64b5f6;">ink.avif | ink1.avif</p>
+        </div>
+    </div>
+</section>
+
+<!-- 26. Scratch Upcycling -->
+<section class="partner-full" style="background: #ffffff; color: #1a1a2e;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #2e7d32;"><i class="fas fa-recycle"></i> SCRATCH UPCYCLING</h2>
+            <p>Scratch Upcycling is a creative initiative in Gulu turning glass bottles into beautiful, functional products - proving that waste can be transformed into value. By collecting discarded glass from homes and streets, the team makes cups, candle holders, and other everyday items, creating income opportunities while reducing waste. Built on the belief that solutions can be simple and community-led, Scratch Upcycling is building a future where glass is consistently reused, valued, and part of a circular, sustainable economy.</p>
+            <a href="https://www.instagram.com/scratchupcycling?igsh=dGgxbW40eGUwcWVw" class="partner-btn" style="background: #2e7d32; color: white; border: none; box-shadow: 0 10px 20px rgba(46,125,50,0.3);">TAKE A LOOK AT THEIR INSTAGRAM →</a>
+        </div>
+        <div class="partner-img overlap-container" style="min-height: 320px;">
+            <img class="frame-img img-back" src="partners/scratch2.avif" alt="Scratch Upcycling" style="width: 240px; height: 240px; border: 3px solid #2e7d32; border-radius: 20px;" onerror="this.src='https://placehold.co/260x260/2e7d32/ffffff?text=Scratch'">
+            <img class="frame-img img-front" src="partners/scratch.avif" alt="Scratch Upcycling" style="width: 180px; height: 180px; top: 20px; right: -10px; border: 3px solid #2e7d32; border-radius: 20px;" onerror="this.src='https://placehold.co/200x200/2e7d32/ffffff?text=Scratch'">
+            <p class="img-label" style="position: absolute; bottom: -30px; width: 100%;">scrutch.avif | scrutch1.avif</p>
+        </div>
+    </div>
+</section>
+
+<!-- 27. Takataka -->
+<section class="partner-full" style="background: #ffffff; color: #1a1a2e;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #0d47a1;"><i class="fas fa-trash-alt"></i> TAKATAKA</h2>
+            <p>Did you know that 91% of the world's plastic is NOT recycled? Takataka is very aware of this issue and they are doing something about it! They are developing technology that is safely processing plastic waste in areas where waste is currently being burned or littered. You can buy recycled products like wall tiles or chairs from this! And to top it off, they are able to employ marginalized people groups, creating opportunities for healing for trauma survivors.</p>
+            <a href="https://www.takatakaplastics.com/" class="partner-btn" style="background: #0d47a1; color: white; border: none; box-shadow: 0 10px 20px rgba(13,71,161,0.3);">LEARN MORE →</a>
+        </div>
+        <div class="partner-img overlap-container" style="min-height: 320px;">
+            <img class="blob-img img-back" src="partners/takataka1.avif" alt="Takataka" style="width: 240px; height: 240px; border: 3px solid #0d47a1;" onerror="this.src='https://placehold.co/260x260/0d47a1/ffffff?text=Takataka'">
+            <img class="blob-img img-front" src="partners/takataka2.avif" alt="Takataka" style="width: 200px; height: 200px; top: 10px; right: -15px; border: 3px solid #0d47a1;" onerror="this.src='https://placehold.co/220x220/0d47a1/ffffff?text=Takataka'">
+            <p class="img-label" style="position: absolute; bottom: -30px; width: 100%;">taka.avif | taka1.avif</p>
+        </div>
+    </div>
+</section>
+
+<!-- 28. Lumi Solar -->
+<section class="partner-full" style="background: linear-gradient(145deg, #fff8e1, #ffecb3); color: #1a1a2e;">
+    <div class="partner-container fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #f57f17;"><i class="fas fa-sun"></i> LUMI SOLAR</h2>
+            <p>Lumi Solar is a renewable energy company delivering reliable, high-quality, and affordable solar solutions across Uganda. Specializing in system design, installation, maintenance, power audits, and backup power, Lumi Solar serves NGOs, institutions, and communities. By creating local jobs, supporting long-term partners, and replacing polluting energy sources, the company strengthens both the economy and the environment while ensuring communities have consistent, sustainable access to clean energy.</p>
+            <a href="http://www.facebook.com/lumisolarug" class="partner-btn" style="background: #f57f17; color: white; border: none; box-shadow: 0 10px 20px rgba(245,127,23,0.3);">VISIT LUMI SOLAR ON FACEBOOK →</a>
+        </div>
+        <div class="partner-img overlap-container" style="min-height: 320px;">
+            <img class="circle-img img-back" src="partners/Lumisolar.avif" style="width: 240px; height: 240px; border: 3px solid #f57f17;" onerror="this.src='https://placehold.co/260x260/f57f17/ffffff?text=Lumi'">
+            <img class="circle-img img-front" src="partners/lumisolar1.avif" alt="Lumi Solar" style="width: 180px; height: 180px; top: 20px; right: -10px; border: 3px solid #f57f17;" onerror="this.src='https://placehold.co/200x200/f57f17/ffffff?text=Lumi'">
+            <p class="img-label" style="position: absolute; bottom: -30px; width: 100%;">lumi.avif | lumi1.avif</p>
+        </div>
+    </div>
+</section>
+
+<!-- 29. Elevate Water -->
+<section class="partner-full" style="background: #ffffff; color: #1a1a2e;">
+    <div class="partner-container image-left fade-up">
+        <div class="partner-text">
+            <h2 style="font-family: 'Playfair Display', serif; color: #0288d1;"><i class="fas fa-tint"></i> ELEVATE WATER</h2>
+            <p>With the sole mission of getting affordable, clean drinking water into the homes of everyone in Gulu, Elevate Water is a self-sustaining business selling clean drinking water in reusable bottles. You can order your water from Elephante anytime! The Elevate Team is also spearheading a project building protected spring wells in the vulnerable areas of Gulu City, providing clean drinking water to thousands of people.</p>
+            <a href="https://www.elephantecommons.co.ug/partners?form=spring-wells" class="partner-btn" style="background: #0288d1; color: white; border: none; box-shadow: 0 10px 20px rgba(2,136,209,0.3);">DONATE TO A SPRING WELL →</a>
+        </div>
+        <div class="partner-img" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <img class="wave-img" src="partners/elevete2.avif" alt="Elevate Water" style="border: 3px solid #0288d1; max-height: 240px;" onerror="this.src='https://placehold.co/400x300/0288d1/ffffff?text=Elevate'">
+            <img class="wave-img" src="partners/elevate1.avif" alt="Elevate Water" style="border: 3px solid #0288d1; max-height: 240px;" onerror="this.src='https://placehold.co/400x300/0288d1/ffffff?text=Elevate'">
+        </div>
+    </div>
+</section>
+
+<!-- Call to action -->
+<section class="partner-full" style="background: radial-gradient(circle at 30% 40%, #2d1a5e, #1a0a3e); color: white;">
+    <div class="partner-container" style="text-align: center; justify-content: center;">
+        <div class="partner-text" style="text-align: center;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.8rem;">✨ Join the Movement ✨</h2>
+            <p style="font-size:1.1rem;">Become a partner and help us transform Northern Uganda.<br>Local leadership. Global impact.</p>
+            <a href="https://www.elephantecommons.co.ug/connect" class="partner-btn" style="background: #e8436e; color: white; border: none; padding: 14px 42px;">BECOME A PARTNER →</a>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <p>🐘 Elephante Commons — Gulu's Innovation Incubator & Community Center. Each partner, a unique story of change.</p>
+    <p><i class="fas fa-heart" style="color:#e8436e;"></i> EVENTS · LODGE · CAFE · PARTNERS · SPACE · BLOG · GIVE</p>
+    <p>📍 Gulu, Northern Uganda — You're most welcome.</p>
+</footer>
+
+<script>
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+    fadeElements.forEach(el => observer.observe(el));
+    
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href !== '#' && href.startsWith('#')) {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+    console.log("🐘 Elephante Commons — Each partner has a completely unique, attractive style and full-screen presence.");
+</script>
+</body>
+</html>

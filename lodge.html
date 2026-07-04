@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Elephante Commons | The Bank House — Bunkhouse & Private Lodging</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fff9f0 0%, #fef5e8 100%);
+            color: #2c2418;
+            line-height: 1.5;
+        }
+        
+        /* ===== FULL WIDTH SECTIONS ===== */
+        .full-width {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ===== HERO SECTION - FULL WIDTH ===== */
+        .hero {
+            text-align: center;
+            padding: 40px 0 25px;
+            background: linear-gradient(135deg, #2c7a4d15, #e86f3a10);
+            margin: 0;
+            width: 100%;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2c7a4d, #c7a252, #e86f3a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #6b5a48;
+            margin-top: 12px;
+        }
+        .hero-tag {
+            display: inline-block;
+            background: #e86f3a20;
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 16px;
+            color: #e86f3a;
+            font-weight: 600;
+        }
+        .hero-tag i { margin-right: 8px; }
+        
+        /* ===== NAVBAR - FULL WIDTH ===== */
+        .navbar-full {
+            width: 100%;
+            padding: 12px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background: rgba(245, 245, 245, 0.95);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+        .navbar-full .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #000000;
+            letter-spacing: -0.5px;
+        }
+        .navbar-full .logo-link img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        .navbar-full .logo-link .highlight {
+            color: #c0392b;
+        }
+        .navbar-full .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .navbar-full .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #000000;
+            padding: 8px 18px;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            border-radius: 30px;
+        }
+        .navbar-full .nav-links a:hover {
+            color: #e8436e;
+            background: rgba(232,67,110,0.1);
+        }
+        .navbar-full .nav-links a.active {
+            color: #c0392b;
+            background: rgba(192,57,43,0.15);
+        }
+        .navbar-full .nav-links a.cta-nav {
+            background: linear-gradient(135deg, #c0392b, #e8433a);
+            color: white;
+            padding: 8px 24px;
+        }
+        .navbar-full .nav-links a.cta-nav:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(192,57,43,0.3);
+        }
+
+        /* ===== MAIN IMAGE - FULL WIDTH ===== */
+        .main-image {
+            overflow: hidden;
+            margin: 0;
+            background: #f0e6d8;
+            width: 100%;
+        }
+        .main-image img {
+            width: 100%;
+            height: auto;
+            min-height: 280px;
+            max-height: 500px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .main-image:hover img { transform: scale(1.02); }
+        
+        /* ===== CALLOUT BANNER - FULL WIDTH ===== */
+        .callout-banner {
+            background: linear-gradient(135deg, #2c7a4d, #1a5a38);
+            padding: 30px;
+            text-align: center;
+            margin: 0;
+            color: white;
+            width: 100%;
+        }
+        .callout-banner h2 {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 8px;
+        }
+        .callout-banner .phone {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin: 12px 0;
+        }
+        .callout-banner .phone i { margin-right: 12px; }
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 8px;
+            transition: 0.3s;
+        }
+        .whatsapp-btn:hover { transform: scale(1.02); background: #20b859; }
+        
+        /* ===== FEATURE CARDS - FULL WIDTH ===== */
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            margin: 0;
+            width: 100%;
+            background: #ffffff;
+        }
+        .feature-card {
+            flex: 1;
+            min-width: 260px;
+            background: white;
+            padding: 28px;
+            text-align: center;
+            border: 1px solid #f0e0c8;
+            border-right: none;
+            transition: 0.3s;
+        }
+        .feature-card:last-child {
+            border-right: 1px solid #f0e0c8;
+        }
+        .feature-card:hover { transform: translateY(-6px); }
+        .feature-card i {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #2c7a4d, #c7a252);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: #2c7a4d;
+            margin-bottom: 10px;
+        }
+        .feature-card p { color: #6b5a48; font-size: 0.95rem; }
+        
+        /* ===== BUNKHOUSE SECTION - FULL WIDTH ===== */
+        .bunkhouse-section {
+            background: linear-gradient(135deg, #2c7a4d08, #e86f3a08);
+            padding: 40px;
+            margin: 0;
+            width: 100%;
+        }
+        .bunkhouse-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #2c7a4d;
+            margin-bottom: 30px;
+        }
+        .bunkhouse-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+        .bunkhouse-text { flex: 1.2; }
+        .bunkhouse-text h3 { font-size: 1.6rem; color: #e86f3a; margin-bottom: 14px; }
+        .bunkhouse-text p { margin: 16px 0; line-height: 1.7; color: #4a3e2e; }
+        .bunkhouse-gallery {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .bunkhouse-gallery img {
+            width: calc(50% - 8px);
+            border-radius: 28px;
+            height: 160px;
+            object-fit: cover;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .bunkhouse-gallery img:hover { transform: scale(1.02); }
+        
+        /* ===== NONPROFIT BANNER - FULL WIDTH ===== */
+        .nonprofit-banner {
+            background: linear-gradient(135deg, #e86f3a, #c7a252);
+            padding: 35px;
+            text-align: center;
+            margin: 0;
+            color: white;
+            width: 100%;
+        }
+        .nonprofit-banner h3 { font-size: 1.6rem; margin-bottom: 12px; }
+        .nonprofit-banner p { font-size: 1rem; opacity: 0.95; }
+        .learn-more {
+            display: inline-block;
+            background: white;
+            color: #e86f3a;
+            padding: 10px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 16px;
+            transition: 0.3s;
+        }
+        .learn-more:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        
+        /* ===== AMENITIES LIST ===== */
+        .amenities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 24px 0;
+        }
+        .amenity-item {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #2c7a4d;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border: 1px solid #f0e0c8;
+        }
+        .amenity-item i { margin-right: 8px; color: #e86f3a; }
+        
+        /* ===== FOOTER - FULL WIDTH ===== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #e8dcc8;
+            margin: 0;
+            color: #8B7A6B;
+            width: 100%;
+            background: #ffffff;
+        }
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 850px) {
+            .hero h1 { font-size: 2.2rem; }
+            .bunkhouse-grid { flex-direction: column; padding: 0 16px; }
+            .bunkhouse-gallery img { width: 100%; }
+            .bunkhouse-section { padding: 28px; }
+            .callout-banner .phone { font-size: 1.3rem; }
+            .callout-banner { padding: 24px; }
+            .callout-banner h2 { font-size: 1.4rem; }
+            .features-grid { gap: 0; }
+            .feature-card { padding: 22px; min-width: 200px; border-right: 1px solid #f0e0c8; }
+            .bunkhouse-gallery img { height: 140px; }
+            .navbar-full { padding: 10px 20px; }
+            .navbar-full .nav-links a { padding: 4px 12px; font-size: 0.75rem; }
+        }
+        @media (max-width: 500px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero { padding: 30px 16px 20px; }
+            .main-image img { min-height: 180px; max-height: 250px; }
+            .callout-banner .phone { font-size: 1.1rem; }
+            .bunkhouse-section { padding: 20px; }
+            .bunkhouse-title { font-size: 1.5rem; }
+            .bunkhouse-text h3 { font-size: 1.3rem; }
+            .nonprofit-banner { padding: 24px; }
+            .nonprofit-banner h3 { font-size: 1.3rem; }
+            .features-grid { flex-direction: column; }
+            .feature-card { min-width: unset; border-right: 1px solid #f0e0c8; }
+            .navbar-full { flex-direction: column; gap: 8px; padding: 10px 16px; }
+            .navbar-full .logo-link { font-size: 1rem; }
+            .navbar-full .logo-link img { height: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVBAR - FULL WIDTH ===== -->
+    <nav class="navbar-full">
+        <a href="index.html" class="logo-link">
+            <img src="partners/elephante.png" alt="Elephante Commons">
+            <span>ELEPHANTE <span class="highlight">COMMONS</span></span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="menu.html">MENU</a>
+            <a href="space.html">SPACES</a>
+            <a href="partner.html">PARTNERS</a>
+            <a href="lodge.html" class="active">LODGE</a>
+            <a href="connect.html" class="cta-nav">CONNECT</a>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION - FULL WIDTH ===== -->
+    <div class="hero fade-up">
+        <span class="hero-tag"><i class="fas fa-home"></i> The Bank House · NOW OPEN!</span>
+        <h1>Rest. Connect.<br>Give Back.</h1>
+        <p>Communal lodging with purpose — every stay supports our nonprofit work</p>
+    </div>
+
+    <!-- ===== CALL / WHATSAPP BANNER - FULL WIDTH ===== -->
+    <div class="callout-banner fade-up">
+        <h2><i class="fas fa-phone-alt"></i> CALL OR WHATSAPP TO BOOK</h2>
+        <div class="phone">+256 0782 389 824</div>
+        <a href="https://wa.me/256782389824" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Message on WhatsApp</a>
+    </div>
+
+    <!-- ===== FEATURE CARDS - FULL WIDTH ===== -->
+    <div class="features-grid fade-up">
+        <div class="feature-card">
+            <i class="fas fa-bed"></i>
+            <h3>Communal Lodging</h3>
+            <p>Hostel style sleeping quarters with the option to book the rooms privately for your large groups.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-egg"></i>
+            <h3>Great Amenities</h3>
+            <p>Delicious cafe breakfast, luxurious outdoor showers, private parking, free wifi, and cafe room service!</p>
+        </div>
+    </div>
+
+    <!-- ===== BUNKHOUSE SECTION - FULL WIDTH ===== -->
+    <div class="bunkhouse-section fade-up" id="bunkhouse">
+        <h2 class="bunkhouse-title">🏕️ The Bunkhouse Experience</h2>
+        <div class="bunkhouse-grid">
+            <div class="bunkhouse-text">
+                <h3><i class="fas fa-users"></i> Communal Lodging</h3>
+                <p>Hostel style sleeping quarters with the option to book the rooms privately for your large groups. Perfect for retreats, team gatherings, or budget-conscious travelers who value community.</p>
+                <h3 style="margin-top: 20px;"><i class="fas fa-tree"></i> Private Lounge & Grounds</h3>
+                <p>Enjoy a private compound with an all weather lounge for dining, working, and relaxing, complete with a bonfire and hammock! Your home away from home in Gulu.</p>
+                <div class="amenities-list">
+                    <span class="amenity-item"><i class="fas fa-coffee"></i> Cafe breakfast</span>
+                    <span class="amenity-item"><i class="fas fa-shower"></i> Outdoor showers</span>
+                    <span class="amenity-item"><i class="fas fa-car"></i> Private parking</span>
+                    <span class="amenity-item"><i class="fas fa-wifi"></i> Free WiFi</span>
+                    <span class="amenity-item"><i class="fas fa-concierge-bell"></i> Room service</span>
+                </div>
+            </div>
+            <div class="bunkhouse-gallery">
+                <img src="partners/Bunk-house1.jpg" alt="BunkHouse sleeping" onerror="this.src='https://placehold.co/400x300/2c7a4d/ffffff?text=Sleeping'">
+                <img src="partners/Bunk-house2.jpg" alt="BunkHouse lounge" onerror="this.src='https://placehold.co/400x300/2c7a4d/ffffff?text=Lounge'">
+                <img src="partners/Bunk-house3.jpg" alt="Outdoor Bonfire" onerror="this.src='https://placehold.co/400x300/2c7a4d/ffffff?text=Bonfire'">
+                <img src="partners/Bunk-house4.jpg" alt="Hammock" onerror="this.src='https://placehold.co/400x300/2c7a4d/ffffff?text=Hammock'">
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== AMENITIES SHOWCASE - FULL WIDTH ===== -->
+    <div class="features-grid fade-up" id="amenities">
+        <div class="feature-card">
+            <i class="fas fa-utensils"></i>
+            <h3>Cafe Breakfast</h3>
+            <p>Start your day with delicious, locally-sourced breakfast from our cafe. Fresh coffee, eggs, fruit, and more.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-shower"></i>
+            <h3>Luxury Outdoor Showers</h3>
+            <p>Experience refreshing open-air showers surrounded by natural beauty — a unique touch of adventure.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-concierge-bell"></i>
+            <h3>Cafe Room Service</h3>
+            <p>Enjoy our cafe menu delivered right to your room or lounge area. Convenience and comfort combined.</p>
+        </div>
+    </div>
+
+    <!-- ===== 100% PROFIT DONATION BANNER - FULL WIDTH ===== -->
+    <div class="nonprofit-banner fade-up">
+        <h3><i class="fas fa-heart"></i> Stay with Purpose</h3>
+        <p><strong>100% of bunk house profits support our nonprofit work</strong> — empowering local leaders, running community programs, and creating opportunity in Northern Uganda.</p>
+        <a href="#" class="learn-more">LEARN MORE <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <!-- ===== ROOM TYPES OVERVIEW - FULL WIDTH ===== -->
+    <div class="features-grid fade-up">
+        <div class="feature-card">
+            <i class="fas fa-bed"></i>
+            <h3>Private Rooms</h3>
+            <p>Comfortable single, double, and twin rooms for those seeking privacy. Quiet, clean, and restful.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-users"></i>
+            <h3>Bunkhouse Beds</h3>
+            <p>Affordable hostel-style sleeping quarters. Perfect for backpackers, volunteers, and groups.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-building"></i>
+            <h3>Whole Bunkhouse</h3>
+            <p>Book the entire bunkhouse for your group or organization. Great for retreats and team building.</p>
+        </div>
+    </div>
+
+    <!-- ===== LOCATION & CONTACT - FULL WIDTH ===== -->
+    <div class="bunkhouse-section fade-up" style="background: linear-gradient(135deg, #e86f3a10, #c7a25210);" id="contact">
+        <div class="bunkhouse-grid">
+            <div class="bunkhouse-text">
+                <h3 style="color: #2c7a4d;"><i class="fas fa-map-marker-alt"></i> Find Us</h3>
+                <p>The Bank House is located inside Elephante Commons — just minutes from Gulu town center. Secure parking, 24/7 security, and easy access to our cafe and community spaces.</p>
+                <p style="margin-top: 16px;"><strong>📍 Address:</strong> Elephante Commons, Gulu, Northern Uganda</p>
+                <p><strong>📞 Call/WhatsApp:</strong> +256 0782 389 824</p>
+                <p><strong>✉️ Email:</strong> stay@elephantecommons.org</p>
+                <a href="https://wa.me/256782389824" class="whatsapp-btn" style="background: #25D366; margin-top: 16px;"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+            </div>
+            <div class="bunkhouse-gallery">
+                <img src="https://placehold.co/400x300/7B6345/ffffff?text=The+Bank+House+Exterior" alt="Bank House exterior">
+                <img src="https://placehold.co/400x300/8B7355/ffffff?text=Garden+Seating" alt="Garden seating">
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER - FULL WIDTH ===== -->
+    <footer class="fade-up">
+        <p>🐘 Elephante Commons — The Bank House. Rest with purpose, leave with impact.</p>
+        <p><i class="fas fa-heart" style="color: #e86f3a;"></i> 100% of bunkhouse profits support our nonprofit work in Northern Uganda</p>
+        <p style="margin-top: 10px;">📍 Gulu, Northern Uganda — You're most welcome.</p>
+    </footer>
+
+    <script>
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
